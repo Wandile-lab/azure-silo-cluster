@@ -1,4 +1,3 @@
-# 1. The Private Network Interfaces (2 Nodes)
 resource "azurerm_network_interface" "cluster_nic" {
   count               = 2
   name                = "nic-cluster-node-${count.index + 1}"
@@ -8,7 +7,8 @@ resource "azurerm_network_interface" "cluster_nic" {
   ip_configuration {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.private.id
-    private_ip_address_allocation = "Dynamic"
+    private_ip_address_allocation = "Static"
+    private_ip_address            = count.index == 0 ? "10.0.2.5" : "10.0.2.4"
   }
 }
 
@@ -33,7 +33,7 @@ resource "azurerm_linux_virtual_machine" "cluster_vm" {
 
   admin_ssh_key {
     username   = "acumenadmin"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file(pathexpand("~/.ssh/id_rsa.pub"))
   }
 
   os_disk {

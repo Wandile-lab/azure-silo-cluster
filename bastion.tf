@@ -25,7 +25,7 @@ resource "azurerm_linux_virtual_machine" "bastion_vm" {
 
   admin_ssh_key {
     username   = "acumenadmin"
-    public_key = file("~/.ssh/id_rsa.pub")
+    public_key = file(pathexpand("~/.ssh/id_rsa.pub"))
   }
 
   os_disk {
