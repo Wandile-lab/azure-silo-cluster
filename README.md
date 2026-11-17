@@ -4,7 +4,7 @@
 This repository contains the Terraform infrastructure as code (IaC) to provision a distributed, S3-compatible object storage cluster on Microsoft Azure. The deployment utilizes Silo (a MinIO fork) configured for erasure-coded storage across multiple nodes. The primary objective is to deploy a predictable, state-managed storage architecture strictly within a 6-vCPU resource boundary while enforcing private network isolation.
 
 ## 2. Architecture
-![Azure Silo Cluster Architecture](docs/architecture.png)
+![Azure Silo Cluster Architecture](docs/architecture.jpg)
 
 ## 3. Technology Stack
 *   **Infrastructure Provisioning:** Terraform
